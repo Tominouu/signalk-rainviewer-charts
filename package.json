@@ -11,6 +11,10 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/signalk-rainviewer-charts"
-  }
+    "url": "https://github.com/Tominouu/signalk-rainviewer-charts"
+  },
+  "bugs": {
+    "url": "https://github.com/Tominouu/signalk-rainviewer-charts/issues"
+  },
+  "homepage": "https://github.com/Tominouu/signalk-rainviewer-charts"
 }
