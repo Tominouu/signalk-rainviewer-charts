@@ -14,14 +14,13 @@ jobs:
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
-      - run: npm version patch --no-git-tag-version
+      - name: Bump version above latest published
+        run: |
+          LATEST=$(npm view signalk-rainviewer-charts version 2>/dev/null || echo "0.0.0")
+          LOCAL=$(node -p "require('./package.json').version")
+          HIGHEST=$(echo -e "$LATEST\n$LOCAL" | sort -V | tail -1)
+          npm version --no-git-tag-version "$HIGHEST"
+          npm version patch --no-git-tag-version
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Commit version bump back to repo
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add package.json
-          git commit -m "Bump version [skip ci]"
-          git push
