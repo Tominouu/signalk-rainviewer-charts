@@ -1,6 +1,6 @@
 {
   "name": "signalk-rainviewer-charts",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Signal K server plugin that provides live RainViewer weather radar tiles as chart resources",
   "main": "index.js",
   "keywords": [
