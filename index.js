@@ -116,6 +116,8 @@ function signalkRainViewerPlugin(app) {
     description: 'Provides live RainViewer weather radar tiles as chart resources'
   };
 
+  plugin.refreshTileUrl = refreshTileUrl;
+
   plugin.schema = {
     type: 'object',
     properties: {
@@ -164,3 +166,7 @@ function signalkRainViewerPlugin(app) {
 }
 
 module.exports = signalkRainViewerPlugin;
+module.exports.findLatestFrame = findLatestFrame;
+module.exports.buildTileUrl = buildTileUrl;
+module.exports.createProvider = createProvider;
+module.exports.fetchJson = fetchJson;
