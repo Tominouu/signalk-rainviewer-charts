@@ -5,6 +5,8 @@
 
 A [Signal K](https://signalk.org/) server plugin that provides live weather radar tiles from [RainViewer](https://www.rainviewer.com/) as chart resources.
 
+![Demo](screenshots/demo.png)
+
 Once installed, RainViewer appears as a selectable chart layer in any Signal K client that supports the resources/charts API (e.g. [Freeboard-SK](https://github.com/SignalK/freeboard-sk), [KIP](https://github.com/SignalK/kip/)).
 
 ## Install
