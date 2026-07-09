@@ -116,11 +116,33 @@ function signalkRainViewerPlugin(app) {
     description: 'Provides live RainViewer weather radar tiles as chart resources'
   };
 
-  plugin.start = function () {
+  plugin.schema = {
+    type: 'object',
+    properties: {
+      opacity: {
+        type: 'number',
+        default: DEFAULT_OPACITY,
+        title: 'Default tile opacity'
+      },
+      refreshInterval: {
+        type: 'number',
+        default: REFRESH_INTERVAL_MS / 1000 / 60,
+        title: 'Refresh interval (minutes)'
+      }
+    }
+  };
+
+  plugin.start = function (options) {
     app.debug('Starting RainViewer charts plugin');
     refreshTileUrl().then(() => {
-      app.resourcesApi.register('signalk-rainviewer-charts', createProvider(tileUrlRef));
-      app.debug('RainViewer chart provider registered');
+      try {
+        app.resourcesApi.register('signalk-rainviewer-charts', createProvider(tileUrlRef));
+        app.debug('RainViewer chart provider registered');
+      } catch (e) {
+        app.error(`Failed to register chart provider: ${e.message}`);
+      }
+    }).catch((err) => {
+      app.error(`Initial RainViewer fetch failed: ${err.message}`);
     });
     refreshTimer = setInterval(refreshTileUrl, REFRESH_INTERVAL_MS);
   };
