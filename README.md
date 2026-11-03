@@ -1,7 +1,10 @@
 # signalk-rainviewer-charts
 
 [![npm version](https://img.shields.io/npm/v/signalk-rainviewer-charts)](https://www.npmjs.com/package/signalk-rainviewer-charts)
+[![npm downloads](https://img.shields.io/npm/dm/signalk-rainviewer-charts)](https://npm-stat.com/charts.html?package=signalk-rainviewer-charts)
 [![Publish to npm](https://github.com/Tominouu/signalk-rainviewer-charts/actions/workflows/publish.yml/badge.svg?event=push)](https://github.com/Tominouu/signalk-rainviewer-charts/actions/workflows/publish.yml)
+
+[![Weekly npm downloads](https://raw.githubusercontent.com/Tominouu/signalk-rainviewer-charts/master/stats/downloads.svg)](https://npm-stat.com/charts.html?package=signalk-rainviewer-charts)
 
 A [Signal K](https://signalk.org/) server plugin that provides live weather radar tiles from [RainViewer](https://www.rainviewer.com/) as chart resources.
 

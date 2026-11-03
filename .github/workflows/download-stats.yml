@@ -1,0 +1,32 @@
+name: Update download stats
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Mondays 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  chart:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/downloads-chart.mjs stats/downloads.svg
+      # A push made with GITHUB_TOKEN does not trigger other workflows, so
+      # this commit does not run "Publish to npm".
+      - name: Commit chart if it changed
+        run: |
+          git add stats/downloads.svg
+          if git diff --cached --quiet; then
+            echo "No change"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: update download stats"
+          git push
